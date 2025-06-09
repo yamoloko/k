@@ -5,7 +5,8 @@ using namespace std;
 
 int  main() {
 string fileext , filename ;
-string lin;
+//string lin;
+char lin[100];
 int a = 0;
 cout << "Enter the name of file (without extension): " << endl;
 cin >> filename;
@@ -19,8 +20,7 @@ if(!fil){
 }
  
 //first method to use char[]
-while(getline(fil , lin)){
-    
+while(fil.getline(lin,100)){
     cout << lin << endl ;
     string lineStr(lin);// Convert char array to string
     // Check each character in the line for vowels If lineStr = "Hello", the loop runs 5 times: c = 'H' c = 'e' c = 'l' c = 'l' c = 'o'
