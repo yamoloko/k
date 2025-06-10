@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <string>  // Needed for getline
 using namespace std;
 //In C++, a struct (short for "structure") is a user-defined data type that groups together related variables of different data types. 
@@ -16,7 +17,7 @@ int main() {
     int count = 0;       // Count of students we've read
     
     // Open the file
-    ifstream file("temp.txt");
+    ifstream file("temp1.txt");
     if (!file.is_open()) {
         cout << "Couldn't open students.txt file!" << endl;
         return 1;
@@ -24,21 +25,27 @@ int main() {
     
     // Read student data
     string line; 
-    while (count < 50 && getline(file, line)) {
- //size_t represent the size of odject on the memory
+    while (getline(file, line)) {
+ //size_t represent the size of odject on the memory 
 // Find the last_space to hold the index of space
-        size_t last_space = line.rfind(' ');
+        size_t last = line.rfind(',');
         //string::npos (a special constant meaning "not found").
-        if (last_space != string::npos) {
+        if (last != string::npos) {
           // Extract name (everything before last space)
           //substr() function to extract a substring from the string.(0-->last_space)
-            students[count].name  = line.substr(0, last_space);
+            students[count].name  = line.substr(0, last);
             
             // Extract grade (everything after last space)
             //substr() function to extract a substring from the string.(last_space+1-->end of string)
             //stoi() function to convert a string to an integer.
-            students[count].grade = stoi(line.substr(last_space + 1));
+            //first method with stoi
+            //students[count].grade = stoi(line.substr(last + 1));
             
+//second method
+string na = line.substr(last+1);
+stringstream a(na);
+a>>students[count].grade;
+
             count++;
         }
         
