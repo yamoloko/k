@@ -34,7 +34,7 @@ while(fil.getline(lin,100)){
         }
     }
 
-    
+       //cout<<"the number of vowels in the file is: "<< a <<endl; //here to find the no of vowels at each line
 }
 
 
@@ -43,7 +43,7 @@ while(fil.getline(lin,100)){
 
  
 
- cout << "Current vowel count: " << a << endl;
+ cout << "Current vowel count: " << a << endl;//cout at the end to print the total no of vowels
 
  return 0;
 }
